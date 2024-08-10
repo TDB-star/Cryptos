@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CoinDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageViewLogoCoin"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textViewCoinName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textAlignment="viewEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewUsd"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogoCoin"
+        tools:text="BTC " />
+
+
+    <TextView
+        android:id="@+id/textViewUsd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:text="/ USD"
+        android:textAlignment="viewStart"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewCoinName"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogoCoin" />
+
+    <TextView
+        android:id="@+id/textViewPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:text="@string/price_label"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCoinName"/>
+
+    <TextView
+        android:id="@+id/textViewCoinPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewPriceLabel"
+        app:layout_constraintTop_toBottomOf="@id/textViewCoinName"
+        tools:text="72345678,00" />
+
+    <View
+        android:id="@+id/viewPriceDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#63000000"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewCoinPrice"/>
+
+    <TextView
+        android:id="@+id/textViewMinPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/min_price_a_day"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPriceDivider"/>
+
+    <TextView
+        android:id="@+id/textViewMinPriceDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:textColor="#F44336"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textViewMinPriceLabel"
+        app:layout_constraintTop_toBottomOf="@id/viewPriceDivider"
+        tools:text="72345678,00" />
+
+    <View
+        android:id="@+id/viewMinPriceDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#63000000"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMinPriceDay"/>
+
+    <TextView
+        android:id="@+id/textViewMaxPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/max_price_a_day"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewMinPriceDivider"/>
+
+    <TextView
+        android:id="@+id/textViewMaxPriceDay"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:textColor="#4CAF50"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textViewMaxPriceLabel"
+        app:layout_constraintTop_toBottomOf="@id/viewMinPriceDivider"
+        tools:text="72345678,00" />
+
+    <View
+        android:id="@+id/viewMaxPriceDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#63000000"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaxPriceDay"/>
+
+    <TextView
+        android:id="@+id/textViewLastTransactionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/last_transaction"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewMaxPriceDivider"/>
+
+    <TextView
+        android:id="@+id/textViewLastTransaction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewLastTransactionLabel"
+        app:layout_constraintTop_toBottomOf="@id/viewMaxPriceDivider"
+        tools:text="Bitifinex" />
+
+    <View
+        android:id="@+id/viewLastTransactionDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#63000000"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLastTransactionLabel"/>
+
+    <TextView
+        android:id="@+id/textViewLastUpdateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:text="@string/last_update"
+        android:textStyle="normal"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewLastTransactionDivider"/>
+
+    <TextView
+        android:id="@+id/textViewLastUpdate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:textStyle="normal"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewLastUpdateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/viewLastTransactionDivider"
+        tools:text="21:13:09" />
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
