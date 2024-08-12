@@ -1,8 +1,8 @@
-package com.example.cryptos.pojo
+package com.example.cryptos.data.network.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.cryptos.api.ApiFactory.BASE_IMAGE_URL
+import com.example.cryptos.data.network.api.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptos.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -10,7 +10,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 
 @Entity(tableName = "full_price_list")
-data class CoinPriceInfo(
+data class CoinInfoDto(
     @SerializedName("TYPE")
     @Expose
     var type: String?,
