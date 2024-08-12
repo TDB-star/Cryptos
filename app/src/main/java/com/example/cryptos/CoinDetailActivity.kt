@@ -7,9 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cryptos.data.network.api.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptos.databinding.ActivityCoinDetailBinding
-import com.example.cryptos.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 
 private lateinit var viewModel: CoinViewModel
@@ -42,9 +40,9 @@ class CoinDetailActivity : AppCompatActivity() {
                     textViewMinPriceDay.text=it.lowDay.toString()
                     textViewMaxPriceDay.text=it.highDay.toString()
                     textViewLastTransaction.text = it.lastMarket
-                    textViewLastUpdate.text = convertTimestampToTime(it.lastUpdate)
+                    textViewLastUpdate.text = it.lastUpdate
 
-                    Picasso.get().load(BASE_IMAGE_URL + it.imageUrl).into(imageViewLogoCoin)
+                    Picasso.get().load(it.imageUrl).into(imageViewLogoCoin)
                 }
             })
         }
