@@ -7,7 +7,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.cryptos.data.network.api.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptos.databinding.ActivityCoinDetailBinding
+import com.example.cryptos.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 
 private lateinit var viewModel: CoinViewModel
@@ -24,7 +26,6 @@ class CoinDetailActivity : AppCompatActivity() {
         val view = coinDetailBinding.root
         setContentView(view)
 
-
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
 
         if (!intent.hasExtra(EXTRA_FROM_SYMBOL)) {
@@ -37,13 +38,13 @@ class CoinDetailActivity : AppCompatActivity() {
             viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
                 with(coinDetailBinding) {
                     textViewCoinName.text = it.fromSymbol
-                    textViewCoinPrice.text= it.getFormattedPrice(6)
+                    textViewCoinPrice.text= it.price.toString()
                     textViewMinPriceDay.text=it.lowDay.toString()
                     textViewMaxPriceDay.text=it.highDay.toString()
                     textViewLastTransaction.text = it.lastMarket
-                    textViewLastUpdate.text = it.getFormattedDate()
+                    textViewLastUpdate.text = convertTimestampToTime(it.lastUpdate)
 
-                    Picasso.get().load(it.getFullImageUrl()).into(imageViewLogoCoin)
+                    Picasso.get().load(BASE_IMAGE_URL + it.imageUrl).into(imageViewLogoCoin)
                 }
             })
         }

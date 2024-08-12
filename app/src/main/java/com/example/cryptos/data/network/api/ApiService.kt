@@ -1,25 +1,24 @@
-package com.example.cryptos.api
+package com.example.cryptos.data.network.api
 
-import com.example.cryptos.pojo.CoinInfoListOfData
-import com.example.cryptos.pojo.CoinPriceInfoRawData
-import io.reactivex.rxjava3.core.Single
+import com.example.cryptos.data.network.model.CoinInfoJsonContainerDto
+import com.example.cryptos.data.network.model.CoinNamesListDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
     @GET("top/totalvolfull")
-    fun getTopCoinsInfo(
+    suspend fun getTopCoinsInfo(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = "5e0555a692df3ae3a1bd628be49930feac4045780a40cc80e4b8549e31733985",
         @Query(QUERY_PARAM_LIMIT) limit: Int = 10,
         @Query(QUERY_PARAM_TO_SYMBOL) tSym: String = CURRENCY
-    ): Single<CoinInfoListOfData>
+    ): CoinNamesListDto
 
     @GET("pricemultifull")
-    fun getFullPriceList(
+    suspend fun getFullPriceList(
         @Query(QUERY_PARAM_API_KEY) apiKey: String = "5e0555a692df3ae3a1bd628be49930feac4045780a40cc80e4b8549e31733985",
         @Query(QUERY_PARAM_FROM_SYMBOLS) fSyms: String,
         @Query(QUERY_PARAM_TO_SYMBOLS) tSyms: String = CURRENCY
-    ): Single<CoinPriceInfoRawData>
+    ): CoinInfoJsonContainerDto
 
     companion object {
         private const val QUERY_PARAM_API_KEY = "api_key"

@@ -2,11 +2,10 @@ package com.example.cryptos
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptos.adapters.CoinInfoAdapter
-import com.example.cryptos.pojo.CoinPriceInfo
+import com.example.cryptos.domain.CoinInfoEntity
 
 class CoinPriceListActivity : AppCompatActivity() {
 
@@ -21,7 +20,7 @@ class CoinPriceListActivity : AppCompatActivity() {
 
         val adapter = CoinInfoAdapter(this)
         adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
-            override fun onCoinClick(coinPriceInfo: CoinPriceInfo) {
+            override fun onCoinClick(coinPriceInfo: CoinInfoEntity) {
                 val intent = CoinDetailActivity.newIntent(
                     this@CoinPriceListActivity,
                     coinPriceInfo.fromSymbol
@@ -33,9 +32,8 @@ class CoinPriceListActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
 
-        viewModel.priceList.observe(this, Observer {
+        viewModel.coinInfoList.observe(this) {
             adapter.coinInfoList = it
-        })
+        }
     }
-
 }
