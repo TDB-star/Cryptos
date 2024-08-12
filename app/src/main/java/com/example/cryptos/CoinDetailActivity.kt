@@ -1,30 +1,26 @@
 package com.example.cryptos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.cryptos.data.network.api.ApiFactory.BASE_IMAGE_URL
 import com.example.cryptos.databinding.ActivityCoinDetailBinding
-import com.example.cryptos.utils.convertTimestampToTime
 import com.squareup.picasso.Picasso
 
-private lateinit var viewModel: CoinViewModel
-
-@SuppressLint("StaticFieldLeak")
-private lateinit var coinDetailBinding: ActivityCoinDetailBinding
 
 class CoinDetailActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: CoinViewModel
+
+    private val binding by lazy {
+        ActivityCoinDetailBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coin_detail)
-        
-       coinDetailBinding = ActivityCoinDetailBinding.inflate(layoutInflater)
-        val view = coinDetailBinding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
 
@@ -36,15 +32,15 @@ class CoinDetailActivity : AppCompatActivity() {
 
         if (fromSymbol != null) {
             viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
-                with(coinDetailBinding) {
+                with(binding) {
                     textViewCoinName.text = it.fromSymbol
                     textViewCoinPrice.text= it.price.toString()
                     textViewMinPriceDay.text=it.lowDay.toString()
                     textViewMaxPriceDay.text=it.highDay.toString()
                     textViewLastTransaction.text = it.lastMarket
-                    textViewLastUpdate.text = convertTimestampToTime(it.lastUpdate)
+                    textViewLastUpdate.text = it.lastUpdate
 
-                    Picasso.get().load(BASE_IMAGE_URL + it.imageUrl).into(imageViewLogoCoin)
+                    Picasso.get().load(it.imageUrl).into(imageViewLogoCoin)
                 }
             })
         }

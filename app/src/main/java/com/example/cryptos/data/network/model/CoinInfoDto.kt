@@ -2,12 +2,8 @@ package com.example.cryptos.data.network.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.cryptos.data.network.api.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptos.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 @Entity(tableName = "full_price_list")
 data class CoinInfoDto(
@@ -158,17 +154,4 @@ data class CoinInfoDto(
     @SerializedName("IMAGEURL")
     @Expose
     var imageUrl: String?,
-) {
-    fun getFormattedTime() : String {
-        return convertTimestampToTime(lastUpdate)
-    }
-
-    fun getFullImageUrl() : String {
-        return BASE_IMAGE_URL + imageUrl
-    }
-
-    fun getFormattedPrice(digits: Int) : String {
-        val bigDecimal = price?.let { BigDecimal(it).setScale(digits, RoundingMode.HALF_EVEN) }
-        return bigDecimal.toString()
-    }
-}
+)
