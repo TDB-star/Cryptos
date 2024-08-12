@@ -32,9 +32,9 @@ class CoinPriceListActivity : AppCompatActivity() {
 
         binding.recyclerViewCoinPriceList.adapter = adapter
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
-
+        binding.recyclerViewCoinPriceList.itemAnimator = null
         viewModel.coinInfoList.observe(this) {
-            adapter.coinInfoList = it
+            adapter.submitList(it)
         }
     }
 }
