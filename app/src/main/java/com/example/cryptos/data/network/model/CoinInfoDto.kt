@@ -159,7 +159,7 @@ data class CoinInfoDto(
     @Expose
     var imageUrl: String?,
 ) {
-    fun getFormattedDate() : String {
+    fun getFormattedTime() : String {
         return convertTimestampToTime(lastUpdate)
     }
 
