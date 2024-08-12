@@ -1,6 +1,5 @@
 package com.example.cryptos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,19 +9,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cryptos.databinding.ActivityCoinDetailBinding
 import com.squareup.picasso.Picasso
 
-private lateinit var viewModel: CoinViewModel
-
-@SuppressLint("StaticFieldLeak")
-private lateinit var coinDetailBinding: ActivityCoinDetailBinding
 
 class CoinDetailActivity : AppCompatActivity() {
+
+    private lateinit var viewModel: CoinViewModel
+
+    private val binding by lazy {
+        ActivityCoinDetailBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coin_detail)
-        
-       coinDetailBinding = ActivityCoinDetailBinding.inflate(layoutInflater)
-        val view = coinDetailBinding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[CoinViewModel::class.java]
 
@@ -34,7 +32,7 @@ class CoinDetailActivity : AppCompatActivity() {
 
         if (fromSymbol != null) {
             viewModel.getDetailInfo(fromSymbol).observe(this, Observer {
-                with(coinDetailBinding) {
+                with(binding) {
                     textViewCoinName.text = it.fromSymbol
                     textViewCoinPrice.text= it.price.toString()
                     textViewMinPriceDay.text=it.lowDay.toString()
