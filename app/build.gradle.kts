@@ -67,6 +67,11 @@ dependencies {
 
     implementation("com.squareup.picasso:picasso:2.8")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    val work_version = "2.9.1"
+    implementation("androidx.work:work-runtime-ktx:$work_version")
+
     val lifecycle_version = "2.8.3"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
@@ -79,4 +84,3 @@ dependencies {
 
 }
 
-//annotationProcessor("androidx.room:room-compiler:$room_version")

@@ -47,7 +47,7 @@ class CoinRepositoryImpl(
             }
             // кладем данные в БД
             coinInfoDao.insertPriceList(dbModelList)
-            delay(10000) // 
+            delay(10000) //
         }
     }
 }
